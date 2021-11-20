@@ -1,6 +1,5 @@
 ﻿using Grpc.Net.Client;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GrpcGreeterClient
@@ -19,25 +18,6 @@ namespace GrpcGreeterClient
             Console.WriteLine("Hello Greeting: " + reply.Message);
 
             Console.WriteLine();
-
-            var g = await client.ReturnGuidAsync(
-                              new HelloRequest { Name = "GreeterClient" });
-
-            Console.WriteLine("Guid: " + g.Guid);
-
-            Console.WriteLine();
-
-            var listaNumerosMega = "";
-
-            for (int i = 1; i < 7; i++)
-            {
-                var n = await client.ReturnNumberRangeMegaSenaAsync(
-                              new HelloRequest { Name = "GreeterClient" });
-
-                listaNumerosMega += n.Message + ", ";
-            }
-
-            Console.WriteLine("Sorted Numbers: " + listaNumerosMega.Substring(0, listaNumerosMega.Length - 2));
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
